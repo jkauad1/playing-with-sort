@@ -40,8 +40,8 @@ public class Busca implements Busca_IF {
     }
 
     @Override
-    public Pessoa buscaLinearRecursiva(Pessoa[] pessoas, int idade, int indice) throws IdadeNegativaException {
-        return buscaLinearRecursivaAux(pessoas, idade, indice);
+    public Pessoa buscaLinearRecursiva(Pessoa[] pessoas, int idade) throws IdadeNegativaException {
+        return buscaLinearRecursivaAux(pessoas, idade, 0);
     }
     public Pessoa buscaLinearRecursivaAux(Pessoa[] pessoas, int idade, int indice) throws IdadeNegativaException {
         if (idade < 0) {
@@ -53,7 +53,7 @@ public class Busca implements Busca_IF {
         if (pessoas[indice].getIdade() == idade) {
             return pessoas[indice];
         }
-        return buscaLinearRecursiva(pessoas, idade, (indice + 1));
+        return buscaLinearRecursivaAux(pessoas, idade, (indice + 1));
     }
 
     @Override

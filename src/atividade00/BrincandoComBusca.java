@@ -26,7 +26,7 @@ public class BrincandoComBusca {
         try {
             //pessoaEncontrada = busca.buscaLinearIterativa(pessoas, 25);
             //pessoaEncontrada = busca.buscaBinariaIterativa(pessoas, 25);
-            pessoaEncontrada = busca.buscaLinearRecursiva(pessoas, 25,0);
+            pessoaEncontrada = busca.buscaLinearRecursiva(pessoas, 25);
             //pessoaEncontrada = busca.buscaBinariaRecursiva(pessoas, 25);
             if (pessoaEncontrada != null) {
                 System.out.println("Pessoa encontrada: " + pessoaEncontrada);

@@ -18,20 +18,6 @@ public class Busca implements Busca_IF {
     }
 
     @Override
-    public Pessoa buscaLinearRecursiva(Pessoa[] pessoas, int idade, int indice) throws IdadeNegativaException {
-        if (idade < 0) {  //If age informed is 0 an expection is thrown.
-            throw new IdadeNegativaException("Idade inválida.");
-        }
-        if (indice >= pessoas.length) {
-            return null;
-        }
-        if (pessoas[indice].getIdade() == idade) {
-            return pessoas[indice];
-        }
-        return buscaLinearRecursiva(pessoas, idade, (indice + 1));
-    }
-
-    @Override
     public Pessoa buscaBinariaIterativa(Pessoa[] pessoas, int idade) throws IdadeNegativaException {
         if (idade < 0) {
             throw new IdadeNegativaException("Idade inválida.");
@@ -54,8 +40,27 @@ public class Busca implements Busca_IF {
     }
 
     @Override
+    public Pessoa buscaLinearRecursiva(Pessoa[] pessoas, int idade, int indice) throws IdadeNegativaException {
+        return buscaLinearRecursivaAux(pessoas, idade, indice);
+    }
+    public Pessoa buscaLinearRecursivaAux(Pessoa[] pessoas, int idade, int indice) throws IdadeNegativaException {
+        if (idade < 0) {
+            throw new IdadeNegativaException("Idade inválida.");
+        }
+        if (indice >= pessoas.length) {
+            return null;
+        }
+        if (pessoas[indice].getIdade() == idade) {
+            return pessoas[indice];
+        }
+        return buscaLinearRecursiva(pessoas, idade, (indice + 1));
+    }
+
+    @Override
     public Pessoa buscaBinariaRecursiva(Pessoa[] pessoas, int idade) throws IdadeNegativaException {
-        // TODO Auto-generated method stub
+        if (idade < 0) {
+            throw new IdadeNegativaException("Idade inválida.");
+        }
         return null;
     }
 }

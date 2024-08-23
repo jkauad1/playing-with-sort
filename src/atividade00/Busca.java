@@ -58,8 +58,27 @@ public class Busca implements Busca_IF {
 
     @Override
     public Pessoa buscaBinariaRecursiva(Pessoa[] pessoas, int idade) throws IdadeNegativaException {
-        if (idade < 0) {
+        return buscaBinariaRecursivaAux(pessoas, idade, 0, (pessoas.length - 1));
+    }
+
+    public Pessoa buscaBinariaRecursivaAux(Pessoa[]pessoas, int idade, int start, int end) throws IdadeNegativaException {
+        if (idade < 0){
             throw new IdadeNegativaException("Idade inválida.");
+        }
+        if (start > end){
+            return null;
+        }
+
+        int half = (start + end) / 2;
+
+        if (pessoas[half].getIdade() == idade){
+            return pessoas[half];
+        }
+        if (pessoas[half].getIdade() > idade){
+            return buscaBinariaRecursivaAux(pessoas, idade, start, (end = half - 1));
+            }
+        if (pessoas[half].getIdade() < idade){
+            return buscaBinariaRecursivaAux(pessoas, idade, (start = half + 1), end);
         }
         return null;
     }
